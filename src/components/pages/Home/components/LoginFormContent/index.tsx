@@ -32,7 +32,7 @@ const LoginFormContent: FC<OwnProps> = ({ classes }) => {
                 name="password"
                 inputRef={register({ required: true })}
                 required={true}
-                {...createFieldErrorFromHookFromError("email", errors, "Please fill this field!")}
+                {...createFieldErrorFromHookFromError("password", errors, "Please fill this field!")}
             />
             <div className={classes["button-container"]}>
                 <Button type="submit" variant="contained" color="primary" className={classes.button}>

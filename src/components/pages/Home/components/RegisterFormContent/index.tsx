@@ -32,7 +32,7 @@ const RegisterFormContent: FC<OwnProps> = ({ classes }) => {
                 name="fullName"
                 inputRef={register({ required: true })}
                 required={true}
-                {...createFieldErrorFromHookFromError("email", errors, "Please fill this field!")}
+                {...createFieldErrorFromHookFromError("fullName", errors, "Please fill this field!")}
             />
             <TextField
                 className={classes.input}
@@ -41,7 +41,7 @@ const RegisterFormContent: FC<OwnProps> = ({ classes }) => {
                 name="password"
                 inputRef={register({ required: true })}
                 required={true}
-                {...createFieldErrorFromHookFromError("email", errors, "Please fill this field!")}
+                {...createFieldErrorFromHookFromError("password", errors, "Please fill this field!")}
             />
             <TextField
                 className={classes.input}
@@ -50,7 +50,7 @@ const RegisterFormContent: FC<OwnProps> = ({ classes }) => {
                 name="passwordAgain"
                 inputRef={register({ required: true })}
                 required={true}
-                {...createFieldErrorFromHookFromError("email", errors, "Please fill this field!")}
+                {...createFieldErrorFromHookFromError("passwordAgain", errors, "Please fill this field!")}
             />
             <div className={classes["button-container"]}>
                 <Button type="submit" variant="contained" color="primary" className={classes.button}>
