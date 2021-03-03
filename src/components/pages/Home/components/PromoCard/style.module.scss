@@ -1,0 +1,35 @@
+.PromoCard {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  user-select: none;
+
+  .text {
+    position: absolute;
+    left: 32px;
+    top: 32px;
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: left;
+    z-index: 1;
+  }
+
+
+  .blur {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: black;
+    opacity: 30%;
+    z-index: 0;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}

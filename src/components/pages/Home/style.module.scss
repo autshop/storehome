@@ -1,0 +1,25 @@
+.Home {
+  width:70%;
+  margin: 0 auto;
+  padding-top: 80px;
+  .content {
+    display: grid;
+    grid-template-columns: 45% 1fr 45%;
+
+
+    .form-wrapper {
+      width: 232px;
+      margin: 0 auto;
+
+
+      .form {
+        padding-bottom: 60px;
+
+        .title {
+          font-size: 20px;
+        }
+
+      }
+    }
+  }
+}
