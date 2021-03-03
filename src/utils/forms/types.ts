@@ -9,3 +9,7 @@ export type RegisterFormTypes = {
     passwordAgain: string | null;
     fullName: string | null;
 };
+
+export type NewStoreFormTypes = {
+    name: string | null;
+};
