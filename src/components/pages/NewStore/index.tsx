@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import CreateStoreFormContent from "components/pages/NewStore/components/CreateStoreFormContent";
 //
 import css from "./style.module.scss";
+import { CircularProgress } from "@material-ui/core";
 
 const useStyles = makeStyles({
     input: {
@@ -31,6 +32,10 @@ const NewStore: FC = () => {
                 <div className={css["form"]}>
                     <p className={css["title"]}>Create your store.</p>
                     <CreateStoreFormContent classes={classes} />
+                    <p className={css["title"]}>
+                        Please wait! Your store is being created, you will be redirected automatically.
+                    </p>
+                    <CircularProgress />
                 </div>
             </div>
         </div>
