@@ -3,7 +3,7 @@ import { CircularProgress, TextField, Button } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 //
 import { LoginFormTypes } from "utils/forms/types";
-import { createFieldErrorFromHookFromError } from "../../../../../utils/forms/helpers";
+import { createFieldErrorFromHookFromError } from "utils/forms/helpers";
 
 type OwnProps = {
     classes: any;
