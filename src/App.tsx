@@ -6,6 +6,7 @@ import Home from "components/pages/Home";
 import NewStore from "components/pages/NewStore";
 import MyStores from "components/pages/MyStores";
 import { authActions } from "./redux/auth/slice";
+import RouteGuard from "./components/common/RouteGuard";
 
 const App: FC = () => {
     const dispatch = useDispatch();
@@ -18,13 +19,19 @@ const App: FC = () => {
         <Router>
             <Switch>
                 <Route path="/" exact>
-                    <Home />
+                    <RouteGuard inverse redirectTo={"/my-stores"}>
+                        <Home />
+                    </RouteGuard>
                 </Route>
                 <Route path="/new-store" exact>
-                    <NewStore />
+                    <RouteGuard>
+                        <NewStore />
+                    </RouteGuard>
                 </Route>
                 <Route path="/my-stores" exact>
-                    <MyStores />
+                    <RouteGuard>
+                        <MyStores />
+                    </RouteGuard>
                 </Route>
             </Switch>
         </Router>
