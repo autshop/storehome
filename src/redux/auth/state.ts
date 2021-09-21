@@ -7,6 +7,10 @@ export type AuthState = {
         isLoading: boolean;
         error: string;
     };
+    login: {
+        isLoading: boolean;
+        error: string;
+    };
 };
 
 export const initialState: AuthState = {
@@ -17,6 +21,10 @@ export const initialState: AuthState = {
     isLoading: false,
     error: null,
     registration: {
+        isLoading: false,
+        error: ""
+    },
+    login: {
         isLoading: false,
         error: ""
     }

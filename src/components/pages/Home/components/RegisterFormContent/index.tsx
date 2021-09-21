@@ -1,9 +1,11 @@
 import { FC } from "react";
 import { CircularProgress, TextField, Button } from "@material-ui/core";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 //
 import { RegisterFormTypes } from "utils/forms/types";
 import { createFieldErrorFromHookFromError } from "utils/forms/helpers";
+import { authActions } from "redux/auth/slice";
 
 type OwnProps = {
     classes: any;
@@ -12,7 +14,9 @@ type OwnProps = {
 const RegisterFormContent: FC<OwnProps> = ({ classes }) => {
     const { register, handleSubmit, errors } = useForm<RegisterFormTypes>();
 
-    const handleLoginSubmit = (formData: RegisterFormTypes) => {};
+    const dispatch = useDispatch();
+
+    const handleLoginSubmit = (formData: RegisterFormTypes) => dispatch(authActions.registerUserRequest(formData));
 
     return (
         <form onSubmit={handleSubmit(handleLoginSubmit)} noValidate>
@@ -41,6 +45,7 @@ const RegisterFormContent: FC<OwnProps> = ({ classes }) => {
                 name="password"
                 inputRef={register({ required: true })}
                 required={true}
+                type={"password"}
                 {...createFieldErrorFromHookFromError("password", errors, "Please fill this field!")}
             />
             <TextField
@@ -50,6 +55,7 @@ const RegisterFormContent: FC<OwnProps> = ({ classes }) => {
                 name="passwordAgain"
                 inputRef={register({ required: true })}
                 required={true}
+                type={"password"}
                 {...createFieldErrorFromHookFromError("passwordAgain", errors, "Please fill this field!")}
             />
             <div className={classes["button-container"]}>

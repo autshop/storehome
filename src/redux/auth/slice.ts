@@ -17,16 +17,28 @@ const authSlice = createSlice({
             state.isLoading = false;
             state.error = action.payload.error;
         },
-        registerUserRequest: state => {
-            state.isLoading = true;
+        registerUserRequest: (
+            state,
+            action: PayloadAction<{ email: string; fullName: string; password: string; passwordAgain: string }>
+        ) => {
+            state.registration.isLoading = true;
         },
-        registerUserSuccess: (state, action: PayloadAction<{ user: { email: string } }>) => {
-            state.isLoading = false;
-            state.user = action.payload.user;
+        registerUserSuccess: state => {
+            state.registration.isLoading = false;
         },
         registerUserFailure: (state, action: PayloadAction<{ error: string }>) => {
-            state.isLoading = false;
-            state.error = action.payload.error;
+            state.registration.isLoading = false;
+            state.registration.error = action.payload.error;
+        },
+        loginUserRequest: (state, action: PayloadAction<{ email: string; password: string }>) => {
+            state.login.isLoading = true;
+        },
+        loginUserSuccess: state => {
+            state.login.isLoading = false;
+        },
+        loginUserFailure: (state, action: PayloadAction<{ error: string }>) => {
+            state.login.isLoading = false;
+            state.login.error = action.payload.error;
         }
     }
 });

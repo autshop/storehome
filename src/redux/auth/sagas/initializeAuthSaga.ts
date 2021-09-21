@@ -12,6 +12,8 @@ function* initializeAuthSaga() {
         if (!token) {
             yield put(authActions.initializeAuthFailure({ error: null }));
         } else {
+            serverApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
             const {
                 data: {
                     data: { user }

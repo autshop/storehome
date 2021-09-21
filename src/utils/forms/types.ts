@@ -1,15 +1,15 @@
 export type LoginFormTypes = {
-    email: string | null;
-    password: string | null;
+    email: string;
+    password: string;
 };
 
 export type RegisterFormTypes = {
-    email: string | null;
-    password: string | null;
-    passwordAgain: string | null;
-    fullName: string | null;
+    email: string;
+    password: string;
+    passwordAgain: string;
+    fullName: string;
 };
 
 export type NewStoreFormTypes = {
-    name: string | null;
+    name: string;
 };
