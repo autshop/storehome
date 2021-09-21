@@ -1,12 +1,20 @@
-import { FC, memo } from "react";
+import { FC, memo, useEffect } from "react";
 import classNames from "classnames";
-//
-//
-import css from "./style.module.scss";
+import { useDispatch } from "react-redux";
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+//
+import { shopActions } from "redux/shop/slice";
+//
+import css from "./style.module.scss";
 
 const MyStores: FC = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(shopActions.loadShopsRequest());
+    }, [dispatch]);
+
     const history = useHistory();
     const images = [
         {
