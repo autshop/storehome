@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 //
-import { StoreState } from "lib/state";
-import { authReducer } from "lib/auth/slice";
+import { StoreState } from "redux/state";
+import { authReducer } from "redux/auth/slice";
 
 const combinedReducers = combineReducers<StoreState>({
     auth: authReducer

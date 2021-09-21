@@ -1,5 +1,5 @@
 //
-import { StoreState } from "lib/state";
+import { StoreState } from "redux/state";
 
 const getState = (state: StoreState) => state.auth;
 

@@ -1,4 +1,4 @@
-import { AuthState, initialState as initialAuthState } from "lib/auth/state";
+import { AuthState, initialState as initialAuthState } from "redux/auth/state";
 
 export type StoreState = { auth: AuthState };
 
