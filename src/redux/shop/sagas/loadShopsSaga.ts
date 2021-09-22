@@ -1,10 +1,9 @@
 import { put, call } from "redux-saga/effects";
 //
-import { authActions } from "redux/auth/slice";
-import LocalStorageService, { LocalStorageKeys } from "utils/LocalStorageService";
 import serverApi from "lib/api";
 import ApiResponse from "lib/api/type";
-import { shopActions } from "../slice";
+import { shopActions } from "redux/shop/slice";
+import { Shop } from "redux/shop/types";
 
 function* loadShopsSaga() {
     try {
@@ -12,7 +11,7 @@ function* loadShopsSaga() {
             data: {
                 data: { shops }
             }
-        }: ApiResponse<{ shops: any[] }> = yield call(serverApi.get, "/api/shops");
+        }: ApiResponse<{ shops: Shop[] }> = yield call(serverApi.get, "/api/shop");
 
         yield put(shopActions.loadShopsSuccess({ shops }));
     } catch (e) {

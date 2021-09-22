@@ -1,5 +1,7 @@
+import { Shop } from "redux/shop/types";
+
 export type ShopState = {
-    shops: any[];
+    shops: Shop[];
     isLoading: boolean;
     error: string;
     newShop: {
