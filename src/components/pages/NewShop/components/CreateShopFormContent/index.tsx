@@ -1,15 +1,15 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { CircularProgress, TextField, Button } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 //
 import { createFieldErrorFromHookFromError } from "utils/forms/helpers";
 import { NewStoreFormTypes } from "utils/forms/types";
 
-type OwnProps = {
+type Props = {
     classes: any;
 };
 
-const CreateStoreFormContent: FC<OwnProps> = ({ classes }) => {
+const CreateShopFormContent: FC<Props> = ({ classes }) => {
     const { register, handleSubmit, errors } = useForm<NewStoreFormTypes>();
 
     const handleLoginSubmit = (formData: NewStoreFormTypes) => {};
@@ -18,7 +18,6 @@ const CreateStoreFormContent: FC<OwnProps> = ({ classes }) => {
         <form onSubmit={handleSubmit(handleLoginSubmit)} noValidate>
             <TextField
                 className={classes.input}
-                label="Store name"
                 id="storeName"
                 name="storeName"
                 inputRef={register({ required: true })}
@@ -29,9 +28,8 @@ const CreateStoreFormContent: FC<OwnProps> = ({ classes }) => {
                 <Button type="submit" variant="contained" color="primary" className={classes.button}>
                     <b>CREATE</b>
                 </Button>
-                {false && <CircularProgress className={classes.progress} />}
             </div>
         </form>
     );
 };
-export default CreateStoreFormContent;
+export default memo(CreateShopFormContent);

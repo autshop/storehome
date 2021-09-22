@@ -12,7 +12,7 @@ const CreateShopButton: FC = () => {
 
     const history = useHistory();
 
-    const handleCreateNewShop = () => history.push("/new-store");
+    const handleCreateNewShop = () => history.push("/new-shop");
 
     return (
         <div className={css["CreateShopButton"]}>

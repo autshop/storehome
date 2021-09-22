@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 //
 import Home from "components/pages/Home";
-import NewStore from "components/pages/NewStore";
+import NewShop from "components/pages/NewShop";
 import MyShops from "components/pages/MyShops";
 import { authActions } from "redux/auth/slice";
 import RouteGuard from "components/common/RouteGuard";
@@ -23,9 +23,9 @@ const App: FC = () => {
                         <Home />
                     </RouteGuard>
                 </Route>
-                <Route path="/new-store" exact>
+                <Route path="/new-shop" exact>
                     <RouteGuard>
-                        <NewStore />
+                        <NewShop />
                     </RouteGuard>
                 </Route>
                 <Route path="/my-shops" exact>
