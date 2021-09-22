@@ -10,6 +10,6 @@ export type RegisterFormTypes = {
     fullName: string;
 };
 
-export type NewStoreFormTypes = {
+export type NewShopFormTypes = {
     name: string;
 };

@@ -1,18 +1,21 @@
 import { FC, memo } from "react";
-import { CircularProgress, TextField, Button } from "@material-ui/core";
+import { TextField, Button } from "@material-ui/core";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 //
 import { createFieldErrorFromHookFromError } from "utils/forms/helpers";
-import { NewStoreFormTypes } from "utils/forms/types";
+import { NewShopFormTypes } from "utils/forms/types";
+import { shopActions } from "redux/shop/slice";
 
 type Props = {
     classes: any;
 };
 
 const CreateShopFormContent: FC<Props> = ({ classes }) => {
-    const { register, handleSubmit, errors } = useForm<NewStoreFormTypes>();
+    const dispatch = useDispatch();
+    const { register, handleSubmit, errors } = useForm<NewShopFormTypes>();
 
-    const handleLoginSubmit = (formData: NewStoreFormTypes) => {};
+    const handleLoginSubmit = (formData: NewShopFormTypes) => dispatch(shopActions.createShopRequest(formData));
 
     return (
         <form onSubmit={handleSubmit(handleLoginSubmit)} noValidate>
