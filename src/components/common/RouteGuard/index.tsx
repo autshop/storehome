@@ -15,7 +15,8 @@ const RouteGuard: FC<Props> = ({ children, inverse = false, redirectTo = "/" }) 
 
     const condition = inverse ? !isLoggedIn : isLoggedIn;
 
-    if (condition) {
+    //if (condition) {
+    if (true) {
         return <>{children}</>;
     }
 

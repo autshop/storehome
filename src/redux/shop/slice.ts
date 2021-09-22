@@ -23,10 +23,15 @@ const shopSlice = createSlice({
         },
         createShopSuccess: state => {
             state.newShop.isSaving = false;
+            state.newShop.id = null;
         },
         createShopFailure: (state, action: PayloadAction<{ error: string }>) => {
             state.newShop.isSaving = false;
             state.newShop.error = action.payload.error;
+            state.newShop.id = null;
+        },
+        setNewShopId: (state, action: PayloadAction<{ id: number }>) => {
+            state.newShop.id = action.payload.id;
         }
     }
 });

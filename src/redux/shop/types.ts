@@ -5,4 +5,4 @@ export enum ShopStatus {
     RUNNING = "RUNNING"
 }
 
-export type Shop = { id: number; name: string; status: ShopStatus };
+export type Shop = { id: number; name: string; status: ShopStatus; url: string };

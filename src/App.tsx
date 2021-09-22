@@ -4,9 +4,9 @@ import { useDispatch } from "react-redux";
 //
 import Home from "components/pages/Home";
 import NewStore from "components/pages/NewStore";
-import MyStores from "components/pages/MyStores";
-import { authActions } from "./redux/auth/slice";
-import RouteGuard from "./components/common/RouteGuard";
+import MyShops from "components/pages/MyShops";
+import { authActions } from "redux/auth/slice";
+import RouteGuard from "components/common/RouteGuard";
 
 const App: FC = () => {
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const App: FC = () => {
         <Router>
             <Switch>
                 <Route path="/" exact>
-                    <RouteGuard inverse redirectTo={"/my-stores"}>
+                    <RouteGuard inverse redirectTo={"/my-shops"}>
                         <Home />
                     </RouteGuard>
                 </Route>
@@ -28,9 +28,9 @@ const App: FC = () => {
                         <NewStore />
                     </RouteGuard>
                 </Route>
-                <Route path="/my-stores" exact>
+                <Route path="/my-shops" exact>
                     <RouteGuard>
-                        <MyStores />
+                        <MyShops />
                     </RouteGuard>
                 </Route>
             </Switch>

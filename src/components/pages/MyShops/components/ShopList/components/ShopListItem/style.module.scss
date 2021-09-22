@@ -1,0 +1,41 @@
+.ShopListItem {
+  width: 220px;
+  margin-bottom: 24px;
+  user-select: none;
+
+  a {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  &-is-clickable {
+    cursor: pointer;
+  }
+
+  &-content {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-image-wrapper {
+      height: 136px;
+      width: 136px;
+
+      &-image {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-text {
+      padding-top: 8px;
+      text-align: center;
+      width: 100%;
+      font-weight: bold;
+    }
+  }
+
+}

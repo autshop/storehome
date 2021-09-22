@@ -1,0 +1,9 @@
+.CreateShopButton {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+
+  &-spinner {
+    color: #ffc14d;
+  }
+}
