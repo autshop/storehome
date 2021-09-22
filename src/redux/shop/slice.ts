@@ -36,6 +36,6 @@ const shopSlice = createSlice({
     }
 });
 
-export const { actions: shopActions, reducer: shopReducer } = shopSlice;
+export const { actions: ShopActions, reducer: ShopReducer } = shopSlice;
 export type { ShopState } from "redux/shop/state";
 export { initialState } from "redux/shop/state";

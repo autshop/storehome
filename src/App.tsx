@@ -5,14 +5,14 @@ import { useDispatch } from "react-redux";
 import Home from "components/pages/Home";
 import NewShop from "components/pages/NewShop";
 import MyShops from "components/pages/MyShops";
-import { authActions } from "redux/auth/slice";
+import { AuthActions } from "redux/auth/slice";
 import RouteGuard from "components/common/RouteGuard";
 
 const App: FC = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(authActions.initializeAuthRequest());
+        dispatch(AuthActions.initializeAuthRequest());
     }, [dispatch]);
 
     return (

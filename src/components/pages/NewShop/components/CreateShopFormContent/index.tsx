@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 //
 import { createFieldErrorFromHookFromError } from "utils/forms/helpers";
 import { NewShopFormTypes } from "utils/forms/types";
-import { shopActions } from "redux/shop/slice";
+import { ShopActions } from "redux/shop/slice";
 
 type Props = {
     classes: any;
@@ -15,7 +15,7 @@ const CreateShopFormContent: FC<Props> = ({ classes }) => {
     const dispatch = useDispatch();
     const { register, handleSubmit, errors } = useForm<NewShopFormTypes>();
 
-    const handleLoginSubmit = (formData: NewShopFormTypes) => dispatch(shopActions.createShopRequest(formData));
+    const handleLoginSubmit = (formData: NewShopFormTypes) => dispatch(ShopActions.createShopRequest(formData));
 
     return (
         <form onSubmit={handleSubmit(handleLoginSubmit)} noValidate>

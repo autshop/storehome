@@ -1,7 +1,7 @@
 import { call, delay, put } from "redux-saga/effects";
 //
 import serverApi from "lib/api";
-import { shopActions } from "redux/shop/slice";
+import { ShopActions } from "redux/shop/slice";
 import ApiResponse from "lib/api/type";
 import { Shop, ShopStatus } from "redux/shop/types";
 
@@ -25,7 +25,7 @@ function* pollShopCreationStatus(id: number) {
     }
 }
 
-function* createShopSaga({ payload: { name } }: ReturnType<typeof shopActions.createShopRequest>) {
+function* createShopSaga({ payload: { name } }: ReturnType<typeof ShopActions.createShopRequest>) {
     try {
         const {
             data: {
@@ -37,10 +37,10 @@ function* createShopSaga({ payload: { name } }: ReturnType<typeof shopActions.cr
 
         yield call(pollShopCreationStatus, id);
 
-        yield put(shopActions.createShopSuccess());
-        yield put(shopActions.loadShopsRequest());
+        yield put(ShopActions.createShopSuccess());
+        yield put(ShopActions.loadShopsRequest());
     } catch (e) {
-        yield put(shopActions.loadShopsFailure({ error: e }));
+        yield put(ShopActions.loadShopsFailure({ error: e }));
     }
 }
 

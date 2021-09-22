@@ -1,11 +1,11 @@
 import { call, put } from "redux-saga/effects";
 //
-import { authActions } from "redux/auth/slice";
+import { AuthActions } from "redux/auth/slice";
 import ApiResponse from "lib/api/type";
 import serverApi from "lib/api";
 import LocalStorageService, { LocalStorageKeys } from "utils/LocalStorageService";
 
-function* loginUserSaga({ payload: { email, password } }: ReturnType<typeof authActions.loginUserRequest>) {
+function* loginUserSaga({ payload: { email, password } }: ReturnType<typeof AuthActions.loginUserRequest>) {
     try {
         const {
             data: {
@@ -17,10 +17,10 @@ function* loginUserSaga({ payload: { email, password } }: ReturnType<typeof auth
 
         serverApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-        yield put(authActions.loginUserSuccess());
-        yield put(authActions.initializeAuthRequest());
+        yield put(AuthActions.loginUserSuccess());
+        yield put(AuthActions.initializeAuthRequest());
     } catch (e) {
-        yield put(authActions.loginUserFailure(e));
+        yield put(AuthActions.loginUserFailure(e));
     }
 }
 

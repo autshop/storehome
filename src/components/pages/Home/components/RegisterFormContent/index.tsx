@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 //
 import { RegisterFormTypes } from "utils/forms/types";
 import { createFieldErrorFromHookFromError } from "utils/forms/helpers";
-import { authActions } from "redux/auth/slice";
+import { AuthActions } from "redux/auth/slice";
 
 type OwnProps = {
     classes: any;
@@ -16,7 +16,7 @@ const RegisterFormContent: FC<OwnProps> = ({ classes }) => {
 
     const dispatch = useDispatch();
 
-    const handleLoginSubmit = (formData: RegisterFormTypes) => dispatch(authActions.registerUserRequest(formData));
+    const handleLoginSubmit = (formData: RegisterFormTypes) => dispatch(AuthActions.registerUserRequest(formData));
 
     return (
         <form onSubmit={handleSubmit(handleLoginSubmit)} noValidate>

@@ -1,11 +1,7 @@
 import { FC, memo } from "react";
-import { CircularProgress, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import { useForm } from "react-hook-form";
 //
 import PromoCard from "components/pages/Home/components/PromoCard";
-import { LoginFormTypes } from "utils/forms/types";
 //
 import css from "./style.module.scss";
 import LoginFormContent from "./components/LoginFormContent";

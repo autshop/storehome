@@ -43,6 +43,6 @@ const authSlice = createSlice({
     }
 });
 
-export const { actions: authActions, reducer: authReducer } = authSlice;
+export const { actions: AuthActions, reducer: AuthReducer } = authSlice;
 export type { AuthState } from "redux/auth/state";
 export { initialState } from "redux/auth/state";

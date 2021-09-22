@@ -1,6 +1,6 @@
 import { put, call } from "redux-saga/effects";
 //
-import { authActions } from "redux/auth/slice";
+import { AuthActions } from "redux/auth/slice";
 import LocalStorageService, { LocalStorageKeys } from "utils/LocalStorageService";
 import serverApi from "lib/api";
 import ApiResponse from "lib/api/type";
@@ -10,7 +10,7 @@ function* initializeAuthSaga() {
         const token = LocalStorageService.get(LocalStorageKeys.JWT);
 
         if (!token) {
-            yield put(authActions.initializeAuthFailure({ error: null }));
+            yield put(AuthActions.initializeAuthFailure({ error: null }));
         } else {
             serverApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
@@ -20,10 +20,10 @@ function* initializeAuthSaga() {
                 }
             }: ApiResponse<{ user: { email: string } }> = yield call(serverApi.get, "/api/auth/me");
 
-            yield put(authActions.initializeAuthSuccess({ user }));
+            yield put(AuthActions.initializeAuthSuccess({ user }));
         }
     } catch (e) {
-        yield put(authActions.initializeAuthFailure({ error: e }));
+        yield put(AuthActions.initializeAuthFailure({ error: e }));
     }
 }
 

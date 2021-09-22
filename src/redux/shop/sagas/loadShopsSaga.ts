@@ -2,7 +2,7 @@ import { put, call } from "redux-saga/effects";
 //
 import serverApi from "lib/api";
 import ApiResponse from "lib/api/type";
-import { shopActions } from "redux/shop/slice";
+import { ShopActions } from "redux/shop/slice";
 import { Shop } from "redux/shop/types";
 
 function* loadShopsSaga() {
@@ -13,9 +13,9 @@ function* loadShopsSaga() {
             }
         }: ApiResponse<{ shops: Shop[] }> = yield call(serverApi.get, "/api/shop");
 
-        yield put(shopActions.loadShopsSuccess({ shops }));
+        yield put(ShopActions.loadShopsSuccess({ shops }));
     } catch (e) {
-        yield put(shopActions.loadShopsFailure({ error: e }));
+        yield put(ShopActions.loadShopsFailure({ error: e }));
     }
 }
 

@@ -1,7 +1,7 @@
 import { FC, memo, useEffect } from "react";
 import { useDispatch } from "react-redux";
 //
-import { shopActions } from "redux/shop/slice";
+import { ShopActions } from "redux/shop/slice";
 import ShopList from "components/pages/MyShops/components/ShopList";
 import CreateShopButton from "components/pages/MyShops/components/CreateShopButton";
 //
@@ -11,7 +11,7 @@ const MyShops: FC = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(shopActions.loadShopsRequest());
+        dispatch(ShopActions.loadShopsRequest());
     }, [dispatch]);
 
     return (

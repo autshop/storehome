@@ -31,13 +31,9 @@ const ShopListItem: FC<Props> = ({ id }) => {
         }
     })();
 
-    const tooltipText = isShopRunning ? `Click to enter your shop! (${shop?.url || ""})` : "";
-
-    console.log(isShopRunning && !!shop?.url);
-
     const withLink = (children: ReactNode) =>
         isShopRunning && !!shop?.url ? (
-            <a href={shop?.url} target="_blank">
+            <a href={shop?.url} target="_blank" rel="noreferrer">
                 {children}
             </a>
         ) : (
@@ -49,6 +45,7 @@ const ShopListItem: FC<Props> = ({ id }) => {
             {withLink(
                 <div className={css["ShopListItem-content"]}>
                     <div className={css["ShopListItem-content-image-wrapper"]}>
+                        {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
                         <img
                             className={css["ShopListItem-content-image-wrapper-image"]}
                             src={"https://image.flaticon.com/icons/png/512/1057/1057478.png"}
