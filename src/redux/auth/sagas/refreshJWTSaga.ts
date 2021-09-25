@@ -6,28 +6,18 @@ import serverApi from "lib/api";
 import LocalStorageService, { LocalStorageKeys } from "utils/LocalStorageService";
 import { parseStandardResponse } from "lib/api/util";
 
-function* registerUserSaga({
-    payload: { email, password, fullName, passwordAgain }
-}: ReturnType<typeof AuthActions.registerUserRequest>) {
+function* refreshJWTSaga() {
     try {
         type ResponseType = { token: string };
-        const response: ApiResponse<ResponseType> = yield call(serverApi.post, "/api/auth/register", {
-            email,
-            password,
-            fullName,
-            passwordAgain
-        });
+        const response: ApiResponse<ResponseType> = yield call(serverApi.get, "/api/auth/refresh");
         const token = parseStandardResponse<ResponseType>(response);
 
         LocalStorageService.set(LocalStorageKeys.JWT, token);
         serverApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
-        yield put(AuthActions.registerUserSuccess());
-        yield put(AuthActions.initializeAuthRequest());
     } catch (e) {
-        yield put(AuthActions.registerUserFailure(e));
+        yield put(AuthActions.loginUserFailure(e));
         yield put(AuthActions.logoutUser());
     }
 }
 
-export default registerUserSaga;
+export default refreshJWTSaga;

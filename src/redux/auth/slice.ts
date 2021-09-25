@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, CaseReducer } from "@reduxjs/toolkit";
+import { noop } from "lodash";
 //
 import { initialState } from "redux/auth/state";
 
@@ -39,7 +40,12 @@ const authSlice = createSlice({
         loginUserFailure: (state, action: PayloadAction<{ error: string }>) => {
             state.login.isLoading = false;
             state.login.error = action.payload.error;
-        }
+        },
+        logoutUser: state => {
+            state.isLoggedIn = false;
+            state.user = { email: "" };
+        },
+        refreshJWT: noop as CaseReducer
     }
 });
 
