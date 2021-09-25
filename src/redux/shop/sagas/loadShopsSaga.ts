@@ -9,7 +9,7 @@ import { parseStandardResponse } from "lib/api/util";
 function* loadShopsSaga() {
     try {
         type ResponseType = { shop: Shop[] };
-        const response: ApiResponse<ResponseType> = yield call(serverApi.get, "/api/shop");
+        const response: ApiResponse<ResponseType> = yield call(serverApi.get, "/shop");
         const shops = parseStandardResponse<ResponseType>(response);
 
         yield put(ShopActions.loadShopsSuccess({ shops }));

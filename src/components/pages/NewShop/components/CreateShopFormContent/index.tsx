@@ -21,8 +21,8 @@ const CreateShopFormContent: FC<Props> = ({ classes }) => {
         <form onSubmit={handleSubmit(handleLoginSubmit)} noValidate>
             <TextField
                 className={classes.input}
-                id="storeName"
-                name="storeName"
+                id="name"
+                name="name"
                 inputRef={register({ required: true })}
                 required={true}
                 {...createFieldErrorFromHookFromError("storeName", errors, "Please fill this field!")}

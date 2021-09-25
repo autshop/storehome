@@ -29,7 +29,7 @@ function* pollShopCreationStatus(id: number) {
 function* createShopSaga({ payload: { name } }: ReturnType<typeof ShopActions.createShopRequest>) {
     try {
         type ResponseType = { shop: Shop };
-        const response: ApiResponse<ResponseType> = yield call(serverApi.post, "/api/shop", { name });
+        const response: ApiResponse<ResponseType> = yield call(serverApi.post, "/shop", { name });
         const {
             shop: { id }
         } = parseStandardResponse<ResponseType>(response);
