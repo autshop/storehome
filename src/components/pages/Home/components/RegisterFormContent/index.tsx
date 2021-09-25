@@ -16,10 +16,10 @@ const RegisterFormContent: FC<OwnProps> = ({ classes }) => {
 
     const dispatch = useDispatch();
 
-    const handleLoginSubmit = (formData: RegisterFormTypes) => dispatch(AuthActions.registerUserRequest(formData));
+    const handleRegisterSubmit = (formData: RegisterFormTypes) => dispatch(AuthActions.registerUserRequest(formData));
 
     return (
-        <form onSubmit={handleSubmit(handleLoginSubmit)} noValidate>
+        <form onSubmit={handleSubmit(handleRegisterSubmit)} noValidate>
             <TextField
                 className={classes.input}
                 label="Email"

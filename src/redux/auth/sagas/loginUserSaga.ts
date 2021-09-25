@@ -9,8 +9,8 @@ import { parseStandardResponse } from "lib/api/util";
 function* loginUserSaga({ payload: { email, password } }: ReturnType<typeof AuthActions.loginUserRequest>) {
     try {
         type ResponseType = { token: string };
-        const response: ApiResponse<ResponseType> = yield call(serverApi.post, "/api/auth/login", { email, password });
-        const token = parseStandardResponse<ResponseType>(response);
+        const response: ApiResponse<ResponseType> = yield call(serverApi.post, "/auth/login", { email, password });
+        const { token } = parseStandardResponse<ResponseType>(response);
 
         LocalStorageService.set(LocalStorageKeys.JWT, token);
         serverApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;

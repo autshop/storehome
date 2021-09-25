@@ -11,13 +11,13 @@ function* registerUserSaga({
 }: ReturnType<typeof AuthActions.registerUserRequest>) {
     try {
         type ResponseType = { token: string };
-        const response: ApiResponse<ResponseType> = yield call(serverApi.post, "/api/auth/register", {
+        const response: ApiResponse<ResponseType> = yield call(serverApi.post, "/auth/register", {
             email,
             password,
             fullName,
             passwordAgain
         });
-        const token = parseStandardResponse<ResponseType>(response);
+        const { token } = parseStandardResponse<ResponseType>(response);
 
         LocalStorageService.set(LocalStorageKeys.JWT, token);
         serverApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;

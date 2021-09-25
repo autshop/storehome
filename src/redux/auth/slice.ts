@@ -13,6 +13,7 @@ const authSlice = createSlice({
         initializeAuthSuccess: (state, action: PayloadAction<{ user: { email: string } }>) => {
             state.isLoading = false;
             state.user = action.payload.user;
+            state.isLoggedIn = true;
         },
         initializeAuthFailure: (state, action: PayloadAction<{ error: string | null }>) => {
             state.isLoading = false;
