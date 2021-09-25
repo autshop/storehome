@@ -4,6 +4,7 @@ import serverApi from "lib/api";
 import { ShopActions } from "redux/shop/slice";
 import ApiResponse from "lib/api/type";
 import { Shop, ShopStatus } from "redux/shop/types";
+import { parseStandardResponse } from "../../../lib/api/util";
 
 function* pollShopCreationStatus(id: number) {
     while (true) {
@@ -27,20 +28,18 @@ function* pollShopCreationStatus(id: number) {
 
 function* createShopSaga({ payload: { name } }: ReturnType<typeof ShopActions.createShopRequest>) {
     try {
+        type ResponseType = { shop: Shop };
+        const response: ApiResponse<ResponseType> = yield call(serverApi.post, "/api/shop", { name });
         const {
-            data: {
-                data: {
-                    shop: { id }
-                }
-            }
-        }: ApiResponse<{ shop: Shop }> = yield call(serverApi.post, "/api/shop", { name });
+            shop: { id }
+        } = parseStandardResponse<ResponseType>(response);
 
         yield call(pollShopCreationStatus, id);
 
         yield put(ShopActions.createShopSuccess());
-        yield put(ShopActions.loadShopsRequest());
+        yield put(ShopActions.createShopSuccess());
     } catch (e) {
-        yield put(ShopActions.loadShopsFailure({ error: e }));
+        yield put(ShopActions.createShopFailure({ error: e }));
     }
 }
 
