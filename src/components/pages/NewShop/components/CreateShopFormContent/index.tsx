@@ -1,19 +1,26 @@
 import { FC, memo } from "react";
 import { TextField, Button } from "@material-ui/core";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 //
 import { createFieldErrorFromHookFromError } from "utils/forms/helpers";
 import { NewShopFormTypes } from "utils/forms/types";
 import { ShopActions } from "redux/shop/slice";
+import shopSelectors from "redux/shop/selectors";
 //
 import css from "./style.module.scss";
 
 const CreateShopFormContent: FC = () => {
+    const newShopId = useSelector(shopSelectors.getNewShopId);
+
     const dispatch = useDispatch();
     const { register, handleSubmit, errors } = useForm<NewShopFormTypes>();
 
     const handleLoginSubmit = (formData: NewShopFormTypes) => dispatch(ShopActions.createShopRequest(formData));
+
+    if (newShopId !== null) {
+        return null;
+    }
 
     return (
         <div className={css["CreateShopFormContent"]}>

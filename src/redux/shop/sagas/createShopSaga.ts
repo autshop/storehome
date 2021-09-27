@@ -30,14 +30,13 @@ function* createShopSaga({ payload: { name } }: ReturnType<typeof ShopActions.cr
     try {
         type ResponseType = { shop: Shop };
         const response: ApiResponse<ResponseType> = yield call(serverApi.post, "/shop", { name });
-        const {
-            shop: { id }
-        } = parseStandardResponse<ResponseType>(response);
+        const { id }: Shop = parseStandardResponse<ResponseType>(response);
 
-        yield call(pollShopCreationStatus, id);
+        //yield call(pollShopCreationStatus, id);
 
         yield put(ShopActions.createShopSuccess({ id }));
     } catch (e) {
+        console.log(e);
         yield put(ShopActions.createShopFailure({ error: e }));
     }
 }

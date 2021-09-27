@@ -31,7 +31,7 @@ const shopSlice = createSlice({
             state.newShop.error = action.payload.error;
             state.newShop.id = null;
         },
-        setNewShopId: (state, action: PayloadAction<{ id: number }>) => {
+        setNewShopId: (state, action: PayloadAction<{ id: number | null }>) => {
             state.newShop.id = action.payload.id;
         }
     }
