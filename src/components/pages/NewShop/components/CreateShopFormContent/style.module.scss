@@ -1,0 +1,24 @@
+.CreateShopFormContent {
+  width: 232px;
+  margin: 0 auto;
+
+  &__title {
+    font-size: 20px;
+    padding-bottom: 32px;
+  }
+
+  &__input {
+    width: 100%;
+    padding-bottom: 14px;
+  }
+
+  &__button_container {
+    display: flex;
+    justify-content: flex-end;
+
+    &__button {
+      background: #FFB775;
+    }
+  }
+
+}
