@@ -1,25 +1,33 @@
 import React, { FC, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 //
 import Home from "components/pages/Home";
 import NewShop from "components/pages/NewShop";
 import MyShops from "components/pages/MyShops";
-import { AuthActions } from "redux/auth/slice";
 import RouteGuard from "components/common/RouteGuard";
+import { AppActions } from "redux/app/slice";
+import appSelectors from "redux/app/selectors";
+import LoadingScreen from "components/common/LoadingScreen";
 
 const App: FC = () => {
+    const isAppInitialized = useSelector(appSelectors.getIsInitialized);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(AuthActions.initializeAuthRequest());
+        dispatch(AppActions.initializeAppRequest());
     }, [dispatch]);
+
+    if (!isAppInitialized) {
+        return <LoadingScreen />;
+    }
 
     return (
         <Router>
             <Switch>
-                <Route path="/" exact>
-                    <RouteGuard inverse redirectTo={"/my-shops"}>
+                <Route path="/login" exact>
+                    <RouteGuard inverse redirectTo={"/"}>
                         <Home />
                     </RouteGuard>
                 </Route>
@@ -28,7 +36,7 @@ const App: FC = () => {
                         <NewShop />
                     </RouteGuard>
                 </Route>
-                <Route path="/my-shops" exact>
+                <Route path="/" exact>
                     <RouteGuard>
                         <MyShops />
                     </RouteGuard>

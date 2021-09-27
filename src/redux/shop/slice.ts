@@ -20,10 +20,11 @@ const shopSlice = createSlice({
         },
         createShopRequest: (state, action: PayloadAction<{ name: string }>) => {
             state.newShop.isSaving = true;
-        },
-        createShopSuccess: state => {
-            state.newShop.isSaving = false;
             state.newShop.id = null;
+        },
+        createShopSuccess: (state, action: PayloadAction<{ id: number }>) => {
+            state.newShop.isSaving = false;
+            state.newShop.id = action.payload.id;
         },
         createShopFailure: (state, action: PayloadAction<{ error: string }>) => {
             state.newShop.isSaving = false;

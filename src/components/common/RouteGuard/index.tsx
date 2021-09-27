@@ -10,7 +10,7 @@ type Props = {
     inverse?: boolean;
 };
 
-const RouteGuard: FC<Props> = ({ children, inverse = false, redirectTo = "/" }) => {
+const RouteGuard: FC<Props> = ({ children, inverse = false, redirectTo = "/login" }) => {
     const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
     const condition = inverse ? !isLoggedIn : isLoggedIn;

@@ -10,8 +10,6 @@ function* initializeAuthSaga() {
     try {
         const token = LocalStorageService.get(LocalStorageKeys.JWT);
 
-        console.log(token);
-
         if (!token) {
             yield put(AuthActions.initializeAuthFailure({ error: null }));
         } else {

@@ -28,7 +28,6 @@ const useStyles = makeStyles({
 const NewShop: FC = () => {
     const isNewShopSaving = useSelector(shopSelectors.getNewShopIsSaving);
     const newShopId = useSelector(shopSelectors.getNewShopId) || -1;
-
     const shop = useSelector(shopSelectors.createGetShopById(newShopId));
 
     const classes = useStyles();
@@ -36,7 +35,7 @@ const NewShop: FC = () => {
     return (
         <div className={css["NewShop"]}>
             <div className={css["content"]}>
-                {isNewShopSaving ? (
+                {isNewShopSaving && (
                     <>
                         <p className={css["title"]}>
                             Please wait! Your shop is being created, you will be redirected automatically.
@@ -44,7 +43,8 @@ const NewShop: FC = () => {
                         <p className={css["status"]}>The status of your shop: {shop?.status || "N/A"}</p>
                         <CircularProgress />
                     </>
-                ) : (
+                )}
+                {!isNewShopSaving && (
                     <div className={css["form"]}>
                         <p className={css["title"]}>Create your shop.</p>
                         <CreateShopFormContent classes={classes} />

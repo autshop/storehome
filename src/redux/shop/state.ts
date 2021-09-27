@@ -1,4 +1,4 @@
-import { Shop, ShopStatus } from "redux/shop/types";
+import { Shop } from "redux/shop/types";
 
 export type ShopState = {
     shops: Shop[];
@@ -12,11 +12,7 @@ export type ShopState = {
 };
 
 export const initialState: ShopState = {
-    shops: [
-        { id: 1, status: ShopStatus.RUNNING, name: "Nice shop 1.", url: "https://mui.com/components/material-icons/" },
-        { id: 2, status: ShopStatus.RUNNING, name: "Nice shop 2.", url: "https://mui.com/components/material-icons/" },
-        { id: 3, status: ShopStatus.PENDING, name: "Nice shop 3.", url: "" }
-    ],
+    shops: [],
     isLoading: false,
     error: "",
     newShop: {
