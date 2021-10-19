@@ -22,16 +22,16 @@ const ShopListItem: FC<Props> = ({ id }) => {
 
     const displayedStatus = (() => {
         switch (shop?.status) {
-            case ShopStatus.CREATE_IN_PROGRESS:
+            case ShopStatus.PENDING:
                 return (
                     <>
                         <i>Pending</i>
                     </>
                 );
-            case ShopStatus.STOPPED:
+            case ShopStatus.CREATE_IN_PROGRESS:
                 return (
                     <>
-                        <i>Stopped</i>
+                        <i>Creating</i>
                         <span>❌</span>
                     </>
                 );
