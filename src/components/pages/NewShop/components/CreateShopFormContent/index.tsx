@@ -24,12 +24,13 @@ const CreateShopFormContent: FC = () => {
 
     return (
         <div className={css["CreateShopFormContent"]}>
-            <p className={css["CreateShopFormContent__title"]}>Create your shop.</p>
+            <p className={css["CreateShopFormContent__title"]}>Create your shop!</p>
             <form onSubmit={handleSubmit(handleLoginSubmit)} noValidate>
                 <TextField
                     className={css["CreateShopFormContent__input"]}
                     id="name"
                     name="name"
+                    label="Name of your shop"
                     inputRef={register({ required: true })}
                     required={true}
                     {...createFieldErrorFromHookFromError("storeName", errors, "Please fill this field!")}

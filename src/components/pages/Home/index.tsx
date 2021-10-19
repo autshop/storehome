@@ -2,10 +2,10 @@ import { FC, memo } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 //
 import PromoCard from "components/pages/Home/components/PromoCard";
+import LoginFormContent from "components/pages/Home/components/LoginFormContent";
+import RegisterFormContent from "components/pages/Home/components/RegisterFormContent";
 //
 import css from "./style.module.scss";
-import LoginFormContent from "./components/LoginFormContent";
-import RegisterFormContent from "./components/RegisterFormContent";
 
 const useStyles = makeStyles({
     input: {

@@ -1,11 +1,11 @@
 import { FC, memo, ReactNode } from "react";
 import { useSelector } from "react-redux";
+import classNames from "classnames";
 //
 import shopSelectors from "redux/shop/selectors";
 import { ShopStatus } from "redux/shop/types";
 //
 import css from "./style.module.scss";
-import classNames from "classnames";
 
 type Props = {
     id: number;
@@ -14,26 +14,54 @@ type Props = {
 const ShopListItem: FC<Props> = ({ id }) => {
     const shop = useSelector(shopSelectors.createGetShopById(id));
 
+    if (!shop) {
+        return null;
+    }
+
     const isShopRunning = shop?.status === ShopStatus.RUNNING;
 
     const displayedStatus = (() => {
         switch (shop?.status) {
-            case ShopStatus.PENDING:
-                return "Pending";
+            case ShopStatus.CREATE_IN_PROGRESS:
+                return (
+                    <>
+                        <i>Pending</i>
+                    </>
+                );
             case ShopStatus.STOPPED:
-                return "Stopped";
+                return (
+                    <>
+                        <i>Stopped</i>
+                        <span>❌</span>
+                    </>
+                );
             case ShopStatus.RUNNING:
-                return "Running";
-            case ShopStatus.TERMINATED:
-                return "Terminated";
+                return (
+                    <>
+                        <i>Running</i>
+                        <span>✓</span>
+                    </>
+                );
+            case ShopStatus.STOPPED:
+                return (
+                    <>
+                        <i>Stopped</i>
+                        <span>❌</span>
+                    </>
+                );
             default:
-                return "Error";
+                return (
+                    <>
+                        <i>Error</i>
+                        <span>❌</span>
+                    </>
+                );
         }
     })();
 
     const withLink = (children: ReactNode) =>
-        isShopRunning && !!shop?.url ? (
-            <a href={shop?.url} target="_blank" rel="noreferrer">
+        isShopRunning ? (
+            <a href={`http://${shop.name}.shop.akosfi.com`} target="_blank" rel="noreferrer">
                 {children}
             </a>
         ) : (
@@ -43,18 +71,19 @@ const ShopListItem: FC<Props> = ({ id }) => {
     return (
         <div className={classNames(css["ShopListItem"], { [css["ShopListItem-is-clickable"]]: isShopRunning })}>
             {withLink(
-                <div className={css["ShopListItem-content"]}>
-                    <div className={css["ShopListItem-content-image-wrapper"]}>
+                <div className={css["ShopListItem__content"]}>
+                    <div className={css["ShopListItem__content__image-wrapper"]}>
                         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
                         <img
-                            className={css["ShopListItem-content-image-wrapper-image"]}
+                            className={css["ShopListItem__content__image-wrapper__image"]}
                             src={"https://image.flaticon.com/icons/png/512/1057/1057478.png"}
                             alt={"Shop-image"}
                         />
                     </div>
-                    <div className={css["ShopListItem-content-text"]}>{shop?.name || ""}</div>
-                    <div>
+                    <div className={css["ShopListItem__content__text"]}>{shop?.name || ""}</div>
+                    <div className={css["ShopListItem__content__status"]}>
                         <i>{displayedStatus}</i>
+                        <span></span>
                     </div>
                 </div>
             )}

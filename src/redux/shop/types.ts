@@ -1,8 +1,8 @@
 export enum ShopStatus {
     PENDING = "PENDING",
-    TERMINATED = "TERMINATED",
+    CREATE_IN_PROGRESS = "CREATE_IN_PROGRESS",
     STOPPED = "STOPPED",
     RUNNING = "RUNNING"
 }
 
-export type Shop = { id: number; name: string; status: ShopStatus; url: string };
+export type Shop = { id: number; name: string; status: ShopStatus };

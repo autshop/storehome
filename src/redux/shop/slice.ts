@@ -33,7 +33,8 @@ const shopSlice = createSlice({
         },
         setNewShopId: (state, action: PayloadAction<{ id: number | null }>) => {
             state.newShop.id = action.payload.id;
-        }
+        },
+        pollShopCreationStatusRequest: (state, action: PayloadAction<{ id: number }>) => {}
     }
 });
 

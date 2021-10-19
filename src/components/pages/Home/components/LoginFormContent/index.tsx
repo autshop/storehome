@@ -34,6 +34,7 @@ const LoginFormContent: FC<OwnProps> = ({ classes }) => {
                 label="Password"
                 id="password"
                 name="password"
+                type="password"
                 inputRef={register({ required: true })}
                 required={true}
                 {...createFieldErrorFromHookFromError("password", errors, "Please fill this field!")}
