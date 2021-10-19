@@ -61,7 +61,7 @@ const ShopListItem: FC<Props> = ({ id }) => {
 
     const withLink = (children: ReactNode) =>
         isShopRunning ? (
-            <a href={`http://${shop.name}.shop.akosfi.com`} target="_blank" rel="noreferrer">
+            <a href={`http://admin.${shop.name}.shop.akosfi.com`} target="_blank" rel="noreferrer">
                 {children}
             </a>
         ) : (

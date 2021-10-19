@@ -16,7 +16,7 @@ const NewShopStatus: FC = () => {
     const handleRedirectToNewShop = useCallback(() => {
         const a = document.createElement("a");
         a.target = "_blank";
-        a.href = `http://${shopName}.shop.akosfi.com`;
+        a.href = `http://admin.${shopName}.shop.akosfi.com`;
         a.click();
     }, [shopName]);
 
